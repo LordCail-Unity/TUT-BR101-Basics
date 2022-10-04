@@ -1,0 +1,29 @@
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 08
+=================================
+
+
+== Build Settings ==
+File > Build Settings
+> Assigned L00 & L01
+
+== GameManager ==
+Created new Empty GameManager object & script
+Need to reference GameManager in EndGame however hard coding into Player object is a bad idea so we will use FindObjectOfType.
+
+== Player ==
+Separate PlayerMesh from Player.
+Player object can now be centered at (0,0,0) whereas the cube pivot sits at 0.5.
+This poses issue with movement as the original cube's RigidBody is propelled but the Parent object is not.
+Quick Fix based on: https://stackoverflow.com/questions/71980013/proper-gameobject-structure-and-how-to-move-the-parent-object-when-the-child-is
+Move RigidBody AND Collider to the Parent object.
+
+Updated below by dragging Player object into relevant slots..
+> Main Camera > CameraMovement script > Player: Player (new object)
+> ScoreText > Player: Player (new object)
+
+== Restart Level ==
+Used restartLevel Instead of EndGame as this is more accurate.
+Could also be called by a Restart button as well as automatically called when crashing etc.

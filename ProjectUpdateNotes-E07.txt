@@ -1,7 +1,5 @@
 
 
-
-
 =================================
 PROJECT UPDATE NOTES: EPISODE 07
 =================================
@@ -55,24 +53,25 @@ Font
 New Script: SCORE 
 !!TUTORIAL BUG FIX!!
 > To enable TextMeshPro use the following code..
-(Thanks to @I'amGod4U in comments)
+(Thanks to @I'amGod4U in Brackeys YouTube video comments)
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
+// Add TAB line prefix to indent code in GitHub notes
 
-public class Score : MonoBehaviour
-{
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+	using TMPro;
 
-      public Transform Player;
-      public TextMeshProUGUI scoreText;
-   
-    void Update()
-    {
-        scoreText.text = Player.position.z.ToString("0"); // "0" here removes decimal places.
-    }
-}
+	public class Score : MonoBehaviour
+	{
 
+		  public Transform Player;
+		  public TextMeshProUGUI scoreText;
+	   
+		void Update()
+		{
+			scoreText.text = Player.position.z.ToString("0"); // "0" here removes decimal places.
+		}
+	}
 
 
