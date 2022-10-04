@@ -1,0 +1,78 @@
+
+
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 07
+=================================
+
+== Rendering ==
+Switched project to Universal Render Pipeline (URP)
+-- Package Manager > Unity Registry > Universal RP > Install
+-- Create RenderMats folder then Create > Rendering > URP > Pipeline Asset (Forward)
+-- Update ALL Materials > Shader: URP / Lit & update Base Map: Color 
+-- Edit > Project Settings > 
+
+== Fog Disabled ==
+URP mode broke my default fog! Makes Ground disappear during play mode as you move further into the level.
+Searched for a solution but couldn't find one quickly so moving on with quick fix.
+Changing fog to Linear mode fixes disappearing ground but then there is no fog. 
+Exponential Mode: 0.01 is one possible compromise.
+Disabling fog entirely looks better imho.
+
+== Movement & Collision ==
+Edit > Project Settings > Time > Fixed Timestep: 0.01
+Changed for Player & Obstacles:
+RigidBody > Collision Detection > Continuous
+Adjust Player > ForwardForce: 4000
+
+== Environment ==
+Tweaked obstacles for new movement
+
+== UI ==
+Tutorial uses outdated Text system.
+Use new TextMeshPro system instead.
+
+In-Game Canvas 
+> Fixed FINISH position
+
+UI Canvas 
+> UI Scale Mode: Scale with Screen Size
+> Reference Resolution: 1920 x 1080
+> Disabled Background image (Inspector checkbox at top)
+
+Score Box
+> Created TextMeshPro Anchor 600x200 
+> Pivot at Top-Center (ALT+SHIFT click)
+> Font Size: 128 
+
+Font
+> Downloaded Roboto from Google
+> Added Roboto fonts (all non-italic variants) to new folder Assets > UI > Fonts > Roboto
+> Select all imported fonts > R-Click > Create > TextMeshPro > FontAsset
+> Change UI Text > Font Asset > Roboto variants
+
+New Script: SCORE 
+!!TUTORIAL BUG FIX!!
+> To enable TextMeshPro use the following code..
+(Thanks to @I'amGod4U in comments)
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class Score : MonoBehaviour
+{
+
+      public Transform Player;
+      public TextMeshProUGUI scoreText;
+   
+    void Update()
+    {
+        scoreText.text = Player.position.z.ToString("0"); // "0" here removes decimal places.
+    }
+}
+
+
+
