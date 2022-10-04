@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator OnRestart(float delay)
     {
+        Debug.Log("OnRestart COROUTINE STARTED");
+        
         //wait for delay seconds
         yield return new WaitForSecondsRealtime(delay);
 
@@ -49,12 +51,17 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.anyKey);
 
         //do stuff when any key is pressed
-        Debug.Log("RESTART ACTION CALLED");
+        Debug.Log("OnRestart ACTION CALLED");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Debug.Log("OnRestart COROUTINE COMPLETED");
+
     }
 
     IEnumerator OnComplete(float delay)
     {
+        Debug.Log("OnComplete COROUTINE STARTED");
+
         //wait for delay seconds
         yield return new WaitForSecondsRealtime(delay);
 
@@ -67,6 +74,9 @@ public class GameManager : MonoBehaviour
         //do stuff when any key is pressed
         Debug.Log("LEVEL COMPLETE ACTION CALLED");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Debug.Log("OnComplete COROUTINE COMPLETED");
+
     }
 
 }
