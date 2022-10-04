@@ -12,6 +12,11 @@ public class PlayerCollision : MonoBehaviour
             movement.enabled = false;
             FindObjectOfType<GameManager>().RestartLevel();
         }
+        if (collisionInfo.collider.tag == "FinishLine")
+        {
+            movement.enabled = false;
+            FindObjectOfType<GameManager>().LevelComplete();
+        }
     }
 
 }

@@ -1,0 +1,116 @@
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 09
+=================================
+
+
+== Finish Line ==
+Parented components into a single empty GameObject.
+
+USED METHOD FROM THE COMMENTS NOT BRACKEYS METHOD..
+
+@skarian 
+> For those  having trouble with the EndTrigger, here's a somewhat quick solution: 
+
+1. Delete the EndTrigger script.
+2. Add a new tag called "EndTrigger" and apply it onto the End block.
+3. Add a new if statement inside PlayerCollision and check for the tag "EndTrigger". If found, add the following line inside:  FindObjectOfType<GameManager>().CompleteLevel();
+4. Make sure the BoxCollider component inside the End block is active and that the isTrigger toggle inside the component has been turned off.
+
+@LordCail_Unity
+> 3 years on and using Unity2020.3LTS I followed your method successfully!
+
+1) Removed EndTrigger completely. 
+2) Copied an obstacle block, transformed and resized at the finish line, disabled mesh render and added tag "FinishLine".
+
+3) Copied the RestartLevel method in PlayerCollision.cs and adapted to LevelComplete method in GameManager..
+
+    private void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "Obstacle")
+        {
+            movement.enabled = false;
+            FindObjectOfType<GameManager>().RestartLevel();
+        }
+        if (collisionInfo.collider.tag == "FinishLine")
+        {
+            movement.enabled = false;
+            FindObjectOfType<GameManager>().LevelComplete();
+        }
+    }
+
+4) In GameManager.LevelComplete method used IEnumerator to wait for Delay seconds, display UI, then wait for Any Key and call Next Level.. Applied same logic to RestartLevel method and used a RestartLevelUI panel to get rid of Invoke (which relies on a static script and is dangerous for Refactoring / Debugging)
+
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+
+    bool restartLevel = false;
+    bool levelComplete = false;
+
+    public GameObject levelRestartUI;
+    public GameObject levelCompleteUI;
+    public float delay = 2f;
+
+    private IEnumerator _coroutine;
+
+    public void LevelComplete ()
+    {
+        if (levelComplete == false)
+        {
+            levelComplete = true;
+            Debug.Log("LEVEL COMPLETED");
+            _coroutine = OnComplete(delay);
+            StartCoroutine(_coroutine);
+        }
+    }
+
+    public void RestartLevel ()
+    {
+        if (restartLevel == false)
+        {
+            restartLevel = true;
+            Debug.Log("RESTART LEVEL");
+            _coroutine = OnRestart(delay);
+            StartCoroutine(_coroutine);
+        }
+    }
+
+    IEnumerator OnRestart(float delay)
+    {
+        //wait for delay seconds
+        yield return new WaitForSecondsRealtime(delay);
+
+        //do stuff
+        levelRestartUI.SetActive(true);
+
+        //wait for any key to be pressed
+        yield return new WaitUntil(() => Input.anyKey);
+
+        //do stuff when any key is pressed
+        Debug.Log("RESTART ACTION CALLED");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator OnComplete(float delay)
+    {
+        //wait for delay seconds
+        yield return new WaitForSecondsRealtime(delay);
+
+        //do stuff
+        levelCompleteUI.SetActive(true);
+
+        //wait for any key to be pressed
+        yield return new WaitUntil(() => Input.anyKey);
+
+        //do stuff when any key is pressed
+        Debug.Log("LEVEL COMPLETE ACTION CALLED");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+}
