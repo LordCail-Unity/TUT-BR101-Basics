@@ -6,14 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    public LevelManager _levelManager;
+
     bool restartLevel = false;
     bool levelComplete = false;
 
     public GameObject levelRestartUI;
     public GameObject levelCompleteUI;
-    public float delay = 2f;
 
     private IEnumerator _coroutine;
+    public float delaySecs = 2f;
+
+    // NOTE: Because they are almost exactly the same script,
+    // we could collapse (refactor) these two functions into a single function
+    // using the boolean variables to specify which parts of the function to call
+    // however it is probably easier to read like this.
 
     public void LevelComplete ()
     {
@@ -21,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             levelComplete = true;
             Debug.Log("LEVEL COMPLETED");
-            _coroutine = OnComplete(delay);
+            _coroutine = OnComplete(delaySecs);
             StartCoroutine(_coroutine);
         }
     }
@@ -32,17 +39,17 @@ public class GameManager : MonoBehaviour
         {
             restartLevel = true;
             Debug.Log("RESTART LEVEL");
-            _coroutine = OnRestart(delay);
+            _coroutine = OnRestart(delaySecs);
             StartCoroutine(_coroutine);
         }
     }
 
-    IEnumerator OnRestart(float delay)
+    IEnumerator OnRestart(float delaySecs)
     {
         Debug.Log("OnRestart COROUTINE STARTED");
         
         //wait for delay seconds
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSecondsRealtime(delaySecs);
 
         //do stuff
         levelRestartUI.SetActive(true);
@@ -52,18 +59,17 @@ public class GameManager : MonoBehaviour
 
         //do stuff when any key is pressed
         Debug.Log("OnRestart ACTION CALLED");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        _levelManager.ReloadCurrentLevel();
         Debug.Log("OnRestart COROUTINE COMPLETED");
 
     }
 
-    IEnumerator OnComplete(float delay)
+    IEnumerator OnComplete(float delaySecs)
     {
         Debug.Log("OnComplete COROUTINE STARTED");
 
         //wait for delay seconds
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSecondsRealtime(delaySecs);
 
         //do stuff
         levelCompleteUI.SetActive(true);
@@ -73,7 +79,7 @@ public class GameManager : MonoBehaviour
 
         //do stuff when any key is pressed
         Debug.Log("LEVEL COMPLETE ACTION CALLED");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _levelManager.LoadNextLevel();
 
         Debug.Log("OnComplete COROUTINE COMPLETED");
 
