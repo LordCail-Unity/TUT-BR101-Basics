@@ -1,0 +1,28 @@
+
+
+=================================
+PROJECT UPDATE NOTES: E10 EXTENDED
+=================================
+
+
+== Build Project ==
+
+Link:
+> https://www.youtube.com/watch?v=7nxKAtxGSn8
+
+_ BUT we want to update the Level Manager first
+_ AND we want to change the input system to work with touch screen (Horizontal Axis NOT specific key press)
+
+
+== Level Manager ==
+
+_ It's hard to manage various aspects of UI etc across multiple levels so I want to introduce a proper Scene Manager
+_ Found a Brackeys tutorial that covers this off better than the Tarodev one so will attempt to insert into this project AFTER E10
+> https://www.youtube.com/watch?v=YMj2qPq9CP8
+
+
+_ Simply replaced the MenuManager script contents with Brackeys LevelLoader script on the Start button and it works. 
+_ Explanation of why you need to use a weighted value against 0.9 as the loading percentage:
+> https://youtu.be/YMj2qPq9CP8?t=315
+
+Updated sections for TextMeshPro (using TMPro;) and changed the progress bar to hang at 90% rather than hang at 100%.
