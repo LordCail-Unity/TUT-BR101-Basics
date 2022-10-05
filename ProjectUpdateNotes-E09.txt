@@ -1,0 +1,47 @@
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 09
+=================================
+
+
+== Finish Line ==
+Parented components into a single empty GameObject.
+
+USED METHOD FROM THE COMMENTS NOT BRACKEYS METHOD..
+
+@skarian 
+> For those  having trouble with the EndTrigger, here's a somewhat quick solution: 
+
+1_Delete the EndTrigger script.
+2_Add a new tag called "EndTrigger" and apply it onto the End block.
+3_Add a new if statement inside PlayerCollision and check for the tag "EndTrigger". If found, add the following line inside:  FindObjectOfType<GameManager>().CompleteLevel();
+4_Make sure the BoxCollider component inside the End block is active and that the isTrigger toggle inside the component has been turned off.
+
+@LordCail_Unity
+> 3 years on and using Unity2020.3LTS I followed your method successfully!
+
+1) Removed EndTrigger completely. 
+2) Copied an obstacle block, transformed and resized at the finish line, disabled mesh render and added tag "FinishLine".
+3) Copied the RestartLevel method in PlayerCollision.cs and adapted to LevelComplete method in GameManager..
+4) In GameManager.LevelComplete method used IEnumerator to wait for Delay seconds, display UI, then wait for Any Key and call Next Level.. Applied same logic to LevelRestart method and used a LevelRestartUI panel to get rid of Invoke (which relies on a static script and is dangerous for Refactoring / Debugging)
+
+
+== Menu Animation ==
+
+_ Ignored calling Script in Animation part of tutorial
+_ Applied animation tutorial to LevelCompleteUI and LevelRestartUI 
+_ Created two animation components: one NOT looped (LevelCompleteUIAnim), one LOOPED (LevelCompleteUIAnimBlink)
+_ Set "Press any key" to 0 alpha so it is transparent; Blink loop controls only the any key object looping from 0 alpha (0 secs) to 255a (1s) AND back to 0a (2s)
+_ Messed around for an hour trying to figure out why it wasn't working before I realized I was editing the LevelCOMPLETEUI anims but testing the LevelRESTARTUI
+_ In Animator click the transition arrow: Exit Time: 1, Set Transition Duration:0 | Offset:0 | Untick Fixed Duration
+
+
+== Level Manager ==
+
+_ Created LevelManager script and LoadNextLevel + ReloadCurrentLevel
+_ Added ref >> public LevelManager _levelManager; << to GameManager and >> _levelManager.ReloadCurrentLevel(); <<>> _levelManager.LoadNextLevel(); << 
+_ Created temp scenes and added to Build Settings 
+_ Tested loading scenes and it worked!
+_ BUT it's hard to manage various aspects of UI etc across multiple levels so I want to introduce a proper Scene Manager
+_ Found this Tarodev tutorial so will attempt to insert: https://www.youtube.com/watch?v=OmobsXZSRKo

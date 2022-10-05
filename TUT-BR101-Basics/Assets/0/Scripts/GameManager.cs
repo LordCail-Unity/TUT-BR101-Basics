@@ -1,12 +1,37 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-    bool restartLevel = false;
+    public LevelManager _levelManager;
 
-    public float restartDelay = 2f;
+    bool restartLevel = false;
+    bool levelComplete = false;
+
+    public GameObject levelRestartUI;
+    public GameObject levelCompleteUI;
+
+    private IEnumerator _coroutine;
+    public float delaySecs = 2f;
+
+    // NOTE: Because they are almost exactly the same script,
+    // we could collapse (refactor) these two functions into a single function
+    // using the boolean variables to specify which parts of the function to call
+    // however it is probably easier to read like this.
+
+    public void LevelComplete ()
+    {
+        if (levelComplete == false)
+        {
+            levelComplete = true;
+            Debug.Log("LEVEL COMPLETED");
+            _coroutine = OnComplete(delaySecs);
+            StartCoroutine(_coroutine);
+        }
+    }
 
     public void RestartLevel ()
     {
@@ -14,15 +39,50 @@ public class GameManager : MonoBehaviour
         {
             restartLevel = true;
             Debug.Log("RESTART LEVEL");
-            Invoke("Restart", restartDelay); // Invoke enables a delay before calling the method
+            _coroutine = OnRestart(delaySecs);
+            StartCoroutine(_coroutine);
         }
     }
 
-    void Restart()
+    IEnumerator OnRestart(float delaySecs)
     {
-        // Basic Syntax: SceneManager.LoadScene("Level01")
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("RESTARTED");
+        Debug.Log("OnRestart COROUTINE STARTED");
+        
+        //wait for delay seconds
+        yield return new WaitForSecondsRealtime(delaySecs);
+
+        //do stuff
+        levelRestartUI.SetActive(true);
+
+        //wait for any key to be pressed
+        yield return new WaitUntil(() => Input.anyKey);
+
+        //do stuff when any key is pressed
+        Debug.Log("OnRestart ACTION CALLED");
+        _levelManager.ReloadCurrentLevel();
+        Debug.Log("OnRestart COROUTINE COMPLETED");
+
+    }
+
+    IEnumerator OnComplete(float delaySecs)
+    {
+        Debug.Log("OnComplete COROUTINE STARTED");
+
+        //wait for delay seconds
+        yield return new WaitForSecondsRealtime(delaySecs);
+
+        //do stuff
+        levelCompleteUI.SetActive(true);
+
+        //wait for any key to be pressed
+        yield return new WaitUntil(() => Input.anyKey);
+
+        //do stuff when any key is pressed
+        Debug.Log("LEVEL COMPLETE ACTION CALLED");
+        _levelManager.LoadNextLevel();
+
+        Debug.Log("OnComplete COROUTINE COMPLETED");
+
     }
 
 }
