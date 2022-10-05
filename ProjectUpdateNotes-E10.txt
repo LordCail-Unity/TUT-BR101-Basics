@@ -1,0 +1,28 @@
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 09 EXTENDED
+=================================
+
+== Level Manager ==
+
+_ Independently created LevelManager script and LoadNextLevel + ReloadCurrentLevel
+_ Added ref >> public LevelManager _levelManager; << to GameManager and >> _levelManager.ReloadCurrentLevel(); <<>> _levelManager.LoadNextLevel(); << 
+_ Created temp scenes and added to Build Settings 
+_ Tested loading scenes and it worked!
+_ BUT it's hard to manage various aspects of UI etc across multiple levels so I want to introduce a proper Scene Manager
+_ Found this Tarodev tutorial so will attempt to insert into this project AFTER E10
+> https://www.youtube.com/watch?v=OmobsXZSRKo
+
+
+=================================
+PROJECT UPDATE NOTES: EPISODE 10
+=================================
+
+Link:
+https://www.youtube.com/watch?v=r5NWZoTSjWs&list=PLPV2KyIb3jR53Jce9hP7G5xC4O9AgnOuL
+
+== MENU ==
+_ Created Credits screen + Quit button
+_ Created Start menu + button
+_ Added Credits & MenuManager scripts but these could probably be integrated with our LevelManager (which Brackeys did not have) 
