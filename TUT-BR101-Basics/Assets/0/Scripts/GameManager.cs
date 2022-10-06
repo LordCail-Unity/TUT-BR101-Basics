@@ -8,33 +8,43 @@ public class GameManager : MonoBehaviour
     // Replaced by FindObjectOfType below
     // FindObjectOfType required to allow for Additive Loading?
 
+    private bool levelRestart = false;
+    private bool levelComplete = false;
+
+
     public void Crashed()
     {
-        Debug.Log("CRASHED");
+        levelRestart = true;
+        Debug.Log("GAMEMANAGER: PLAYER HIT OBJECT");
 
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
         FindObjectOfType<LevelManager>().RestartLevel();
+        levelRestart = false;
     }
 
     public void FellToDeath()
     {
-        Debug.Log("FELL BELOW KILLZONE");
+        levelRestart = true;
+        Debug.Log("GAMEMANAGER: PLAYER FELL BELOW KILLZONE");
 
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
         FindObjectOfType<LevelManager>().RestartLevel();
+        levelRestart = false;
     }
 
     public void LevelComplete()
     {
-        Debug.Log("LEVEL COMPLETED");
+        levelComplete = true;
+        Debug.Log("GAMEMANAGER: PLAYER TRIGGERED FINISH LINE");
 
         // _levelManager.LoadLevel();
         // Replaced by FindObjectOfType 
 
         FindObjectOfType<LevelManager>().LevelComplete();
+        levelComplete = false;
     }
 }

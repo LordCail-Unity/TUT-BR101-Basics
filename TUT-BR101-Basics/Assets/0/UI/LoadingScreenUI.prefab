@@ -203,7 +203,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -257,14 +257,14 @@ GameObject:
   - component: {fileID: 6066449398716039532}
   - component: {fileID: 6066449398716039533}
   - component: {fileID: 6066449398716039534}
-  - component: {fileID: 6248690500466733294}
+  - component: {fileID: 7390013631742193950}
   m_Layer: 5
   m_Name: LoadingScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6066449398716039535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6248690500466733294
+--- !u!114 &7390013631742193950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6066449398716039536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 862033bcc8e901b4396685502991ad0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 968fd8d6643e6514f9b8e1b3af2dfc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 6066449398763583870}
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.9
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 90%
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df32bd2b30f9c4e428338b064402d40c, type: 2}
   m_sharedMaterial: {fileID: 4120574404082350844, guid: df32bd2b30f9c4e428338b064402d40c, type: 2}

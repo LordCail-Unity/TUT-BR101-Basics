@@ -287,6 +287,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 656512447}
     m_Modifications:
+    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5382380918006996984, guid: 6ac3fe171f4b56448b36732cd8f0c0ef, type: 3}
       propertyPath: m_Name
       value: ObstacleGreen_2x1_01
@@ -334,18 +346,6 @@ PrefabInstance:
     - target: {fileID: 7599235495134746487, guid: 6ac3fe171f4b56448b36732cd8f0c0ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7514040134645319314, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f34fe1afe5c7349aa62e553f23dcb3, type: 3}
