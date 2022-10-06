@@ -24,8 +24,7 @@ public class MenuManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            // Could do this to make the progress 100% at 90% but this will look weird.. better to hang at 90% for a while
-            // float progress = Mathf.Clamp01(operation.progress / 0.9f);
+
             float progress = operation.progress;
             Debug.Log(progress);
 
@@ -38,3 +37,10 @@ public class MenuManager : MonoBehaviour
     }
 
 }
+
+// NOTE
+// Unity cuts loading operation at 90% to do other stuff
+// Could do Math to make the displayed progress = 100% at 90%..
+// float progress = Mathf.Clamp01(operation.progress / 0.9f);
+// BUT this looks weird if other stuff takes a while..
+// Better to hang at 90% for a while
