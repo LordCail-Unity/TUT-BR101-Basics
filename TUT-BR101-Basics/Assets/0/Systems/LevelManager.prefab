@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265998918309801576}
-  - component: {fileID: 1265998918309801579}
-  m_Layer: 0
+  - component: {fileID: 291286229552746326}
+  m_Layer: 7
   m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1265998918309801579
+--- !u!114 &291286229552746326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265998918309801577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95727ab7b2134194eb71c0b599611194, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f7450dc66bfcc54f908b62f7783407f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScreenUI: {fileID: 0}
+  levelRestartUI: {fileID: 1180631951573924999, guid: 70853b2fb455720449cdb7e0227923f3, type: 3}
+  levelCompleteUI: {fileID: 55332829367289492, guid: 85490b42dffb014479edd0e032646865, type: 3}
+  loadingScreenUI: {fileID: 6066449398716039536, guid: 3dcbba5c8cca9d949b746d341ec7ad79, type: 3}
+  _loadingScreenUI: {fileID: 6248690500466733294, guid: 3dcbba5c8cca9d949b746d341ec7ad79, type: 3}
+  sceneToLoadIndex: 0

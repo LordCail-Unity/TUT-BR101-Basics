@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
         if (collisionInfo.collider.tag == "Obstacle")
         {
             _movement.enabled = false;
-            FindObjectOfType<GameManager>().RestartLevel();
+            FindObjectOfType<GameManager>().Crashed();
         }
         if (collisionInfo.collider.tag == "FinishLine")
         {

@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0/Scenes/L00-StartMenu.unity
+    path: Assets/0/Scenes/L00-Main.unity
     guid: 8dfb8ffaa67558b4c9bd8bb75265fba0
   - enabled: 1
-    path: Assets/0/Scenes/L01.unity
-    guid: 9ce0346b61428af4e8c1a8b287030f05
+    path: Assets/0/Scenes/L01-Additive.unity
+    guid: 0fd6f6e497a53244086739aa8fc6af75
   - enabled: 1
-    path: Assets/0/Scenes/L02.unity
-    guid: 045cdd46a1ce467438536f666c1522ea
+    path: Assets/0/Scenes/L02-Additive.unity
+    guid: 46b27d2b0da49c548b1c4e18aeaba71d
   - enabled: 1
-    path: Assets/0/Scenes/L03.unity
-    guid: 5b56ec22cf6d69f46a7be5e68bb8ee8f
+    path: Assets/0/Scenes/L03-Additive.unity
+    guid: 5fac43904e25a434891dd676bfc7a231
   - enabled: 1
     path: Assets/0/Scenes/LZZ-EndGame.unity
     guid: 79216a7cb133ee24294e4e1e1c35976e

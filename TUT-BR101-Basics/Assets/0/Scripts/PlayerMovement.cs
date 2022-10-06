@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_rigidBody.position.y < killZone)
         {
-            FindObjectOfType<GameManager>().RestartLevel();
+            FindObjectOfType<GameManager>().FellToDeath();
         }
 
     }
