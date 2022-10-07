@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
+        // BUG!! Loading multiple instances of the scene when falling through killzone
         // Because LevelRestart uses AsyncLoading you can get multiple collisions before completing.
-        // This boolean trick seems to fix that issue well enough for now.
+        // There should be a boolean trick seems to fix that issue well enough for now.
         if (levelRestart == true)
         {
             FindObjectOfType<LevelManager>().LevelRestart();
-            levelRestart = false;
         }
 
     }

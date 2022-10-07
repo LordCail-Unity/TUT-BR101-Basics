@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardForce = 4000f;
     public float sidewaysForce = 50f;
-    public float killZone = -5f;
     public bool movePlayer;
 
     private void Start()
@@ -30,19 +29,12 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey("d"))
             {
                 _rigidBody.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-
             }
 
             if (Input.GetKey("a"))
             {
                 _rigidBody.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             }
-        }
-
-        // Switch this for a killZone collider / trigger instead? Same set up as FinishLine?
-        if (_rigidBody.position.y < killZone)
-        {
-            FindObjectOfType<GameManager>().FellToDeath();
         }
 
     }

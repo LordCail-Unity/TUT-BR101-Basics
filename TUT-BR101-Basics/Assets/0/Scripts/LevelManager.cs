@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
 
-    public Transform mainUI;
-
     public GameObject startScreenUI;
     public GameObject levelRestartUI;
     public GameObject levelCompleteUI;
@@ -36,8 +34,13 @@ public class LevelManager : MonoBehaviour
         // This method doesn't seem to work as the canvas no longer displays at all..
         // Could Destroy and Instantiate canvas prefabs but this seems inefficient and counterpurpose.
         // Could move canvas prefabs back to the levels but again it's undoing the point of having them in MainLevel.
-        //
+        // 
         // CanvasUpdate();
+        //
+        // Probable solution is to update the canvas animation!!
+        // gameObject.GetComponent<Animation>().Play();
+        // anim.Rebind();
+        // anim.Update(0f);
 
         loadingScreenUI.SetActive(true);
         levelCompleteUI.SetActive(false);
@@ -167,7 +170,11 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Loading Screen Deactivated");
         Debug.Log("AsyncLoad completed | SceneIndex:" + sceneIndex);
 
-        if(FindObjectOfType<PlayerMovement>() == true)
+        _loadingScreenUI.UpdateSlider(0f);
+        Debug.Log("Slider reset");
+
+
+        if (FindObjectOfType<PlayerMovement>() == true)
         {
             FindObjectOfType<PlayerMovement>().movePlayer = true;
         }

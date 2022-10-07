@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - FinishLine
+  - Killzone
   layers:
   - Default
   - TransparentFX
