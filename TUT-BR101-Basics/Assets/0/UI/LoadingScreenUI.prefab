@@ -260,11 +260,11 @@ GameObject:
   - component: {fileID: 7390013631742193950}
   m_Layer: 5
   m_Name: LoadingScreenUI
-  m_TagString: Untagged
+  m_TagString: LoadingScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6066449398716039535
 RectTransform:
   m_ObjectHideFlags: 0

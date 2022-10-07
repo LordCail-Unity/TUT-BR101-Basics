@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 3165860519050339461}
   - component: {fileID: 3165860519050339462}
   - component: {fileID: 3165860519050339463}
+  - component: {fileID: 2095999597944583029}
   m_Layer: 5
   m_Name: StartScreenUI
   m_TagString: Untagged
@@ -446,6 +447,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2095999597944583029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165860519050339480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54acacc3f5312744f97c2d6ad7c2c966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScreenUI: {fileID: 3165860519050339480}
 --- !u!1 &3165860519363941073
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,8 +716,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 2095999597944583029}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: OnStartButtonClick
         m_Mode: 1
         m_Arguments:
