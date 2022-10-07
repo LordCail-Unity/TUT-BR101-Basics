@@ -9,7 +9,7 @@ public class LevelLoader : MonoBehaviour
     public Slider _slider;
     public TMPro.TMP_Text progressText;
 
-    public float loadingUIDelaySecs = 0.2f; // Loading screen is too fast to see so tiny delay.
+    public float loadingUIDelaySecs = 0.1f; // Loading screen is too fast to see so tiny delay.
 
     private int progress;
 

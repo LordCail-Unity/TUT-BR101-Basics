@@ -141,10 +141,6 @@ public class LevelManager : MonoBehaviour
         AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneIndex);
         Debug.Log("Async Unloading Operation Completed");
 
-        //Reset all UI ANIMATORS (NOT animations!) or else they seem to get stuck between levels
-        //Messed with trying to reset the animator and animations for ages and ages but no dice
-        //In the end went with instantiating and destroying prefab menu instances instead
-
     }
 
 
