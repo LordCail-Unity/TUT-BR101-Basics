@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     // Replaced by FindObjectOfType below
     // FindObjectOfType required to allow for Additive Loading?
 
-    private bool levelRestart = false;
-    private bool levelComplete = false;
+    private bool levelRestart;
+    private bool levelComplete;
 
 
     public void Crashed()
@@ -20,8 +20,12 @@ public class GameManager : MonoBehaviour
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
-        FindObjectOfType<LevelManager>().RestartLevel();
-        levelRestart = false;
+        if (levelRestart == true)
+        {
+            FindObjectOfType<LevelManager>().LevelRestart();
+            levelRestart = false;
+        }
+
     }
 
     public void FellToDeath()
@@ -32,8 +36,14 @@ public class GameManager : MonoBehaviour
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
-        FindObjectOfType<LevelManager>().RestartLevel();
-        levelRestart = false;
+        // Because RestartLevel uses AsyncLoading you can get multiple collisions before completing.
+        // This boolean trick seems to fix that issue well enough for now.
+        if (levelRestart == true)
+        {
+            FindObjectOfType<LevelManager>().LevelRestart();
+            levelRestart = false;
+        }
+
     }
 
     public void LevelComplete()
@@ -44,7 +54,13 @@ public class GameManager : MonoBehaviour
         // _levelManager.LoadLevel();
         // Replaced by FindObjectOfType 
 
-        FindObjectOfType<LevelManager>().LevelComplete();
-        levelComplete = false;
+        // Because LevelComplete uses AsyncLoading you can get multiple collisions before completing.
+        // This boolean trick seems to fix that issue well enough for now.
+        if (levelComplete == true)
+        {
+            FindObjectOfType<LevelManager>().LevelComplete();
+            levelComplete = false;
+        }
     }
+
 }

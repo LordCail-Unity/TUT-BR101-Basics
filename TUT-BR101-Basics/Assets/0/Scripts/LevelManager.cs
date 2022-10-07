@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     private int currentScene = 1;
 
     private IEnumerator _coroutine; // Need this for the Delay part of the IEnumerator call?
-    private float endLevelUIDelaySecs = 1.5f; // End level screens pop up too fast so long-ish delay.. 
-    private float loadingUIDelaySecs = 0.3f; // Loading screen is too fast to see so tiny delay..
+    private float endLevelUIDelaySecs = 2f; // End level screens pop up too fast so long-ish delay.. 
+    private float loadingUIDelaySecs = 0.4f; // Loading screen is too fast to see so tiny delay..
 
 
     public void OnStartButtonClick()
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(_coroutine);
     }
 
-    public void RestartLevel()
+    public void LevelRestart()
     {
         Debug.Log("RESTART LEVEL CALLED");
         sceneToLoad = currentScene;
