@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         // _levelManager.RestartLevel();
         // Replaced by FindObjectOfType 
 
-        // Because RestartLevel uses AsyncLoading you can get multiple collisions before completing.
+        // Because LevelRestart uses AsyncLoading you can get multiple collisions before completing.
         // This boolean trick seems to fix that issue well enough for now.
         if (levelRestart == true)
         {

@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// using UnityEngine.UI; trying to use Canvas.ForceUpdateCanvases but broken.. :(
 
 public class LevelManager : MonoBehaviour
 {
+
+    public Transform mainUI;
 
     public GameObject startScreenUI;
     public GameObject levelRestartUI;
@@ -15,9 +17,8 @@ public class LevelManager : MonoBehaviour
     private int currentScene = 1;
 
     private IEnumerator _coroutine; // Need this for the Delay part of the IEnumerator call?
-    private float endLevelUIDelaySecs = 2f; // End level screens pop up too fast so long-ish delay.. 
-    private float loadingUIDelaySecs = 0.4f; // Loading screen is too fast to see so tiny delay..
-
+    public float endLevelUIDelaySecs = 2f; // End level screens pop up too fast so long-ish delay.. 
+    public float loadingUIDelaySecs = 0.4f; // Loading screen is too fast to see so tiny delay..
 
     public void OnStartButtonClick()
     {
@@ -31,6 +32,13 @@ public class LevelManager : MonoBehaviour
         Debug.Log("currentScene:" + currentScene);
         Debug.Log("SceneToLoad:" + sceneToLoad);
 
+        // Trying to get canvas to update as it is getting glitchy after 2nd time displaying..
+        // This method doesn't seem to work as the canvas no longer displays at all..
+        // Could Destroy and Instantiate canvas prefabs but this seems inefficient and counterpurpose.
+        // Could move canvas prefabs back to the levels but again it's undoing the point of having them in MainLevel.
+        //
+        // CanvasUpdate();
+
         loadingScreenUI.SetActive(true);
         levelCompleteUI.SetActive(false);
         levelRestartUI.SetActive(false);
@@ -41,6 +49,12 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Current Scene:" + currentScene);
 
     }
+
+    // public static void CanvasUpdate () 
+    // {
+    //     Canvas.ForceUpdateCanvases();
+    // }
+
 
     public void LevelComplete()
     {
@@ -152,6 +166,11 @@ public class LevelManager : MonoBehaviour
         loadingScreenUI.SetActive(false);
         Debug.Log("Loading Screen Deactivated");
         Debug.Log("AsyncLoad completed | SceneIndex:" + sceneIndex);
+
+        if(FindObjectOfType<PlayerMovement>() == true)
+        {
+            FindObjectOfType<PlayerMovement>().movePlayer = true;
+        }
 
     }
 
