@@ -1,88 +1,66 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-    public LevelManager _levelManager;
+    // public LevelManager _levelManager;
+    // Replaced by FindObjectOfType below
+    // FindObjectOfType required to allow for Additive Loading?
 
-    bool restartLevel = false;
-    bool levelComplete = false;
+    private bool levelRestart;
+    private bool levelComplete;
 
-    public GameObject levelRestartUI;
-    public GameObject levelCompleteUI;
 
-    private IEnumerator _coroutine;
-    public float delaySecs = 2f;
-
-    // NOTE: Because they are almost exactly the same script,
-    // we could collapse (refactor) these two functions into a single function
-    // using the boolean variables to specify which parts of the function to call
-    // however it is probably easier to read like this.
-
-    public void LevelComplete ()
+    public void Crashed()
     {
-        if (levelComplete == false)
+        levelRestart = true;
+        Debug.Log("GAMEMANAGER: PLAYER HIT OBJECT");
+
+        // _levelManager.RestartLevel();
+        // Replaced by FindObjectOfType 
+
+        if (levelRestart == true)
         {
-            levelComplete = true;
-            Debug.Log("LEVEL COMPLETED");
-            _coroutine = OnComplete(delaySecs);
-            StartCoroutine(_coroutine);
+            FindObjectOfType<LevelManager>().LevelRestart();
+            levelRestart = false;
         }
+
     }
 
-    public void RestartLevel ()
+    public void FellToDeath()
     {
-        if (restartLevel == false)
+        levelRestart = true;
+        Debug.Log("GAMEMANAGER: PLAYER FELL BELOW KILLZONE");
+
+        // _levelManager.RestartLevel();
+        // Replaced by FindObjectOfType 
+
+        // BUG!! Loading multiple instances of the scene when falling through killzone
+        // Because LevelRestart uses AsyncLoading you can get multiple collisions before completing.
+        // There should be a boolean trick seems to fix that issue well enough for now.
+        if (levelRestart == true)
         {
-            restartLevel = true;
-            Debug.Log("RESTART LEVEL");
-            _coroutine = OnRestart(delaySecs);
-            StartCoroutine(_coroutine);
+            FindObjectOfType<LevelManager>().LevelRestart();
         }
-    }
-
-    IEnumerator OnRestart(float delaySecs)
-    {
-        Debug.Log("OnRestart COROUTINE STARTED");
-        
-        //wait for delay seconds
-        yield return new WaitForSecondsRealtime(delaySecs);
-
-        //do stuff
-        levelRestartUI.SetActive(true);
-
-        //wait for any key to be pressed
-        yield return new WaitUntil(() => Input.anyKey);
-
-        //do stuff when any key is pressed
-        Debug.Log("OnRestart ACTION CALLED");
-        _levelManager.ReloadCurrentLevel();
-        Debug.Log("OnRestart COROUTINE COMPLETED");
 
     }
 
-    IEnumerator OnComplete(float delaySecs)
+    public void LevelComplete()
     {
-        Debug.Log("OnComplete COROUTINE STARTED");
+        levelComplete = true;
+        Debug.Log("GAMEMANAGER: PLAYER TRIGGERED FINISH LINE");
 
-        //wait for delay seconds
-        yield return new WaitForSecondsRealtime(delaySecs);
+        // _levelManager.LoadLevel();
+        // Replaced by FindObjectOfType 
 
-        //do stuff
-        levelCompleteUI.SetActive(true);
-
-        //wait for any key to be pressed
-        yield return new WaitUntil(() => Input.anyKey);
-
-        //do stuff when any key is pressed
-        Debug.Log("LEVEL COMPLETE ACTION CALLED");
-        _levelManager.LoadNextLevel();
-
-        Debug.Log("OnComplete COROUTINE COMPLETED");
-
+        // Because LevelComplete uses AsyncLoading you can get multiple collisions before completing.
+        // This boolean trick seems to fix that issue well enough for now.
+        if (levelComplete == true)
+        {
+            FindObjectOfType<LevelManager>().LevelComplete();
+            levelComplete = false;
+        }
     }
 
 }

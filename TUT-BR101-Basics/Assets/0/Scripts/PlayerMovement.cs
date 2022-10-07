@@ -7,30 +7,34 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardForce = 4000f;
     public float sidewaysForce = 50f;
-    public float killZone = -1f;
+    public bool movePlayer;
 
-   
+    private void Start()
+    {
+        movePlayer = false;
+    }
+
     // Unity prefers FixedUpdate() method instead of Update() for physics 
     void FixedUpdate()
     {
-        
-        // Add a forward force
-        _rigidBody.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-        if ( Input.GetKey("d"))
+        if (movePlayer == true)
         {
-            _rigidBody.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            
-        }
+            // Add a forward force
+            _rigidBody.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-        if (Input.GetKey("a"))
-        {
-            _rigidBody.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-        }
+            // This is how Brackeys set up his basic movement system.
+            // We will need to research the best way to set up simple move systems.
+            // Then we want to add super simple mobile touch screen input.
+            if (Input.GetKey("d"))
+            {
+                _rigidBody.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            }
 
-        if (_rigidBody.position.y < killZone)
-        {
-            FindObjectOfType<GameManager>().RestartLevel();
+            if (Input.GetKey("a"))
+            {
+                _rigidBody.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            }
         }
 
     }
