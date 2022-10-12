@@ -11,3 +11,12 @@ Note: @8:00 Bardent's GitHub tutorial refers to Project Settings > Editor > Mode
 In Unity2020.3LTS, this setting has moved to Project Settings > Version Control > Mode: Visible Meta Files
 Project Settings > Editor > Asset Serialization > Mode: Force Text is still correct
 Both are default settings in 2020.3LTS.
+
+Public sharing for private projects (eg when delivering via an email responder) can be done using GitFront.
+https://stackoverflow.com/questions/31264165/can-i-share-my-private-github-repository-by-link
+
+https://console.gitfront.io/
+
+Example for this repository:
+https://gitfront.io/r/LordCail/qbFK9ymwM1fY/TUT-BR101-Basics/
+
