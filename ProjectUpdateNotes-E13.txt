@@ -1,0 +1,13 @@
+Integrating BMo Rollerball Tutorial
+Make an Easy 3D Game, Roll a Damn Ball in Unity
+
+https://www.youtube.com/watch?v=BwPT7huwjn4
+
+Basic setup integrated into Brackeys project as separate scenes.
+
+Realised that to integrate tutorials cleanly and understand what we've changed the best way is to do the tutorial exactly as-is but add comments as you go for things that need to be changed. 
+
+Then relabel the tutorial scripts to include a prefix/suffix eg PlayerController > PlayerControllerBMO
+
+Next, create a copy that can then be integrated back in with the main project, which helps to understand what has changed and how to manage it.
+

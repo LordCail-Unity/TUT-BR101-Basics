@@ -1,0 +1,43 @@
+
+
+Brackeys 101 Tutorials
+How to make a HIGH SCORE in Unity
+
+https://www.youtube.com/watch?v=vZU51tbgMXk
+
+Create exact copy of tutorial (unless impossible due to changes from Unity versions)
+
+Pre-work is to build the UI shown at the start of the tutorial..
+
+==NEW BLANK SCENE==
+Hierarchy: Create > Camera > Rename: MainCamera | Tag: MainCamera | Background: Solid Color > White #FFFFFF (not Skybox)
+Create > Light > Directional
+
+==BUILD UI==
+Hierarchy: Create > UI > Panel 
+> [Canvas created automatically]
+> [EventSystem created automatically]
+Canvas Scaler: Scale with screen size | RefRes: 1920 x 1080 | Match Width or Height: Height = 1
+Rename: MenuPanel | SourceImage: None | Color: Light Purple #FFAAFF
+
+R-Click Menu > UI >>
+
+> TextMeshPro > Rename: TMPro_Score
+| TextInput: XX | Font: Roboto-Black | Scale: 5,5,5 | Color: Purple #AA00AA | Anchor: SHIFT-ALT-Centre | PosY: 150 | Alignment: Center, Middle
+
+> Button-TextMeshPro > Rename: RollDiceButtonTMPro 
+| SourceImage: None | Scale: 3,3,3 | Anchor: SHIFT-ALT-Centre
+> [TextMeshPro created automatically] > Rename: TMPro_Roll 
+| TextInput: ROLL DICE | Font: Roboto-Black | Text size scales automatically with button
+
+
+> TextMeshPro > Rename: TMPro_HighScoreLabel
+| TextInput: "HIGH SCORE |" | Font: Roboto-Black | Scale: 2,2,2 | Color: Purple #AA00AA | Anchor: SHIFT-ALT-Btm | PosX: -160 PosY: 300 | Alignment: Right, Middle
+> TextMeshPro > Rename: TMPro_HighScore
+| TextInput: XX | Font: Roboto-Black | Scale: 2,2,2 | Color: Purple #AA00AA | Anchor: SHIFT-ALT-Btm | PosX: 360 PosY: 300 | Alignment: Left, Middle
+
+> Button-TextMeshPro > Rename: ResetButtonTMPro 
+| SourceImage: None | Scale: 3,3,3 | Anchor: SHIFT-ALT-Bottom | PosY: 200
+> [TextMeshPro created automatically] > Rename: TMPro_Reset 
+| TextInput: RESET | Font: Roboto-Black | Text size scales automatically with button
+
