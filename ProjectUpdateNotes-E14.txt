@@ -41,3 +41,26 @@ R-Click Menu > UI >>
 > [TextMeshPro created automatically] > Rename: TMPro_Reset 
 | TextInput: RESET | Font: Roboto-Black | Text size scales automatically with button
 
+==DICE==
+Create Empty GameObject > "Dice" > Reset Transform
+In Scripts Folder > Create C# Script > "Dice" > Drag to Dice GameObject to create new component
+Delete script: Add Using + Class etc
+
+!!IMPORTANT VARIATION!! 
+To use TextMeshPro we need to: 
+Add > using TMPro;
+Replace > Text type variable with TextMeshProUGUI type var
+Save and return to Unity
+
+Drag TMPro_Score to new Dice object 
+
+Set up HighScore; Create PlayerPrefs reference
+
+Add Reset function
+
+Add notes with ideas on how to tweak this script
+
+
+
+
+
