@@ -843,8 +843,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 468983119}
-        m_TargetAssemblyTypeName: Dice, Assembly-CSharp
-        m_MethodName: RollDice
+        m_TargetAssemblyTypeName: ScoreUpdater, Assembly-CSharp
+        m_MethodName: UpdateScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 468983120}
   - component: {fileID: 468983119}
   m_Layer: 0
-  m_Name: Dice
+  m_Name: ScoreUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 468983118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a009659db708434ebcbdbf144a9db4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9541b9366ef1e944093e95dd85969cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1363004039}
@@ -1511,7 +1511,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 468983119}
-        m_TargetAssemblyTypeName: Dice, Assembly-CSharp
+        m_TargetAssemblyTypeName: ScoreUpdater, Assembly-CSharp
         m_MethodName: ResetHighScore
         m_Mode: 1
         m_Arguments:
