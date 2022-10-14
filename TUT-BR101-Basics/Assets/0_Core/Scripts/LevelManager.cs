@@ -9,11 +9,16 @@ public class LevelManager : MonoBehaviour
     public GameObject levelRestartUI;
     public GameObject levelCompleteUI;
     public GameObject loadingScreenUI;
+    public GameObject scoreDisplayUI;
+    //ADD END GAME UI
 
     private GameObject StartScreenUIInstance;
     private GameObject LoadingScreenUIInstance;
     private GameObject LevelRestartUIInstance;
     private GameObject LevelCompleteUIInstance;
+    private GameObject scoreDisplayUIInstance;
+    //ADD END GAME UI
+
 
     public int sceneToLoad = 1; // Set if required or simply load next scene in build index
     private int currentScene = 1;
@@ -29,9 +34,14 @@ public class LevelManager : MonoBehaviour
     public void StartGame()
     {
         Destroy(StartScreenUIInstance);
-        InstantiateLoadingScreen();
+        LoadLevel();
     }
 
+    public void LoadLevel()
+    {
+        InstantiateLoadingScreen();
+        StartAsyncLoading();
+    }
 
     public void InstantiateLoadingScreen()
     {
@@ -40,9 +50,11 @@ public class LevelManager : MonoBehaviour
 
         LoadingScreenUIInstance = Instantiate(loadingScreenUI);
         Debug.Log("Loading Screen Instantiated");
+    }
 
+    public void StartAsyncLoading()
+    {
         FindObjectOfType<LevelLoader>().LoadLevel(sceneToLoad);
-
     }
 
     public void DestroyLoadingScreen()
@@ -57,9 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             FindObjectOfType<PlayerMovement>().movePlayer = true;
         }
-
     }
-
 
     public void LevelComplete()
     {
@@ -101,7 +111,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("OnRestart ACTION CALLED");
 
         Destroy(LevelRestartUIInstance);
-        InstantiateLoadingScreen();
+        LoadLevel();
 
         Debug.Log("OnRestart COROUTINE COMPLETED");
 
@@ -127,7 +137,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("LEVEL COMPLETE ACTION CALLED");
 
         Destroy(LevelCompleteUIInstance);
-        InstantiateLoadingScreen();
+        LoadLevel();
 
         Debug.Log("OnComplete COROUTINE COMPLETED");
 

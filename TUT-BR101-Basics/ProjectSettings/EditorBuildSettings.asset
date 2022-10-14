@@ -9,23 +9,23 @@ EditorBuildSettings:
     path: Assets/0_Core/Scenes/L00-Main.unity
     guid: 8dfb8ffaa67558b4c9bd8bb75265fba0
   - enabled: 1
-    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L01.unity
-    guid: fc1b09d4232072642a3877188f6f60ff
-  - enabled: 1
-    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L02.unity
-    guid: 6a93bcd25e3adc140ac07bc742058d9e
-  - enabled: 1
-    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L03.unity
-    guid: 61006db7cfab8b74abf5d82b1613a375
-  - enabled: 0
     path: Assets/1_Game_Brackeys/Scenes/L01-Additive.unity
     guid: 0fd6f6e497a53244086739aa8fc6af75
-  - enabled: 0
+  - enabled: 1
     path: Assets/1_Game_Brackeys/Scenes/L02-Additive.unity
     guid: 46b27d2b0da49c548b1c4e18aeaba71d
-  - enabled: 0
+  - enabled: 1
     path: Assets/1_Game_Brackeys/Scenes/L03-Additive.unity
     guid: 5fac43904e25a434891dd676bfc7a231
+  - enabled: 0
+    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L01.unity
+    guid: fc1b09d4232072642a3877188f6f60ff
+  - enabled: 0
+    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L02.unity
+    guid: 6a93bcd25e3adc140ac07bc742058d9e
+  - enabled: 0
+    path: Assets/2_Game_Bmo/Scenes/TUT_BMo_BallRoller_L03.unity
+    guid: 61006db7cfab8b74abf5d82b1613a375
   - enabled: 1
     path: Assets/0_Core/Scenes/LZZ-EndGame-Additive.unity
     guid: 79216a7cb133ee24294e4e1e1c35976e

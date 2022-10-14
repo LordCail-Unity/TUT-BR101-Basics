@@ -47,7 +47,6 @@ MonoBehaviour:
   levelRestartUI: {fileID: 1180631951573924999, guid: 70853b2fb455720449cdb7e0227923f3, type: 3}
   levelCompleteUI: {fileID: 55332829367289492, guid: 85490b42dffb014479edd0e032646865, type: 3}
   loadingScreenUI: {fileID: 6066449398716039536, guid: 3dcbba5c8cca9d949b746d341ec7ad79, type: 3}
-  _loadingScreenUI: {fileID: 7390013631742193950, guid: 3dcbba5c8cca9d949b746d341ec7ad79, type: 3}
+  scoreDisplayUI: {fileID: 7986994865459393297, guid: a77ce0c8d8f17b442a0fc4f3b8360079, type: 3}
   sceneToLoad: 1
-  endLevelUIDelaySecs: 2.5
-  loadingUIDelaySecs: 0.4
+  endLevelUIDelaySecs: 2
