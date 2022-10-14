@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
 
+    // Probably better to have AsyncLoad and AsyncUnload in LevelManager but 
+    // Loading Slider and AsyncLoad are easiest to set up in the same script
+    // Because. Reasons.
+
     public Slider _slider;
     public TMPro.TMP_Text progressText;
 
@@ -26,7 +30,7 @@ public class LevelLoader : MonoBehaviour
     }
 
 
-    public void LoadLevel(int sceneIndex)
+    public void StartAsyncLoadCoroutine(int sceneIndex)
     {
         int sceneToLoad = sceneIndex;
         StartCoroutine(AsyncLoad(sceneToLoad, loadingUIDelaySecs));

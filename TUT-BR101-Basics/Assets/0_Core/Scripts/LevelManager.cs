@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,18 +11,21 @@ public class LevelManager : MonoBehaviour
     public GameObject levelCompleteUI;
     public GameObject loadingScreenUI;
     public GameObject scoreDisplayUI;
-    //ADD END GAME UI
+    public GameObject endScreenUI;
+    // REMOVE END GAME UI DUPLICATE -- Load on last level only
+    // DESTROY SCOREUI AT END OF LEVEL
 
     private GameObject StartScreenUIInstance;
     private GameObject LoadingScreenUIInstance;
     private GameObject LevelRestartUIInstance;
     private GameObject LevelCompleteUIInstance;
     private GameObject scoreDisplayUIInstance;
-    //ADD END GAME UI
+    private GameObject endScreenUIInstance;
 
 
     public int sceneToLoad = 1; // Set if required or simply load next scene in build index
     private int currentScene = 1;
+
 
     private IEnumerator _coroutine; // Need this for the Delay part of the IEnumerator call?
     public float endLevelUIDelaySecs = 2f; // End level screens pop up too fast so long-ish delay.. 
@@ -41,20 +45,45 @@ public class LevelManager : MonoBehaviour
     {
         InstantiateLoadingScreen();
         StartAsyncLoading();
+        InstantiateHUDUI();
+    }
+
+    private void InstantiateHUDUI()
+    {
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        int finalSceneIndex = sceneCount - 1;
+        // Scene.buildIndex varies from zero to the number of Scenes in the Build Settings minus one.
+        if (currentScene < finalSceneIndex)
+        {
+            InstantiateScoreDisplayUI();
+        }
+        if (currentScene == finalSceneIndex)
+        {
+            InstantiateEndScreenUI();
+        }
+    }
+
+    private void InstantiateScoreDisplayUI()
+    {
+        scoreDisplayUIInstance = Instantiate(scoreDisplayUI);
+    }
+
+    private void InstantiateEndScreenUI()
+    {
+        endScreenUIInstance = Instantiate(endScreenUI);
     }
 
     public void InstantiateLoadingScreen()
     {
+        LoadingScreenUIInstance = Instantiate(loadingScreenUI);
         Debug.Log("currentScene:" + currentScene);
         Debug.Log("SceneToLoad:" + sceneToLoad);
-
-        LoadingScreenUIInstance = Instantiate(loadingScreenUI);
         Debug.Log("Loading Screen Instantiated");
     }
 
-    public void StartAsyncLoading()
+    private void StartAsyncLoading()
     {
-        FindObjectOfType<LevelLoader>().LoadLevel(sceneToLoad);
+        FindObjectOfType<LevelLoader>().StartAsyncLoadCoroutine(sceneToLoad);
     }
 
     public void DestroyLoadingScreen()
